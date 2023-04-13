@@ -34,10 +34,10 @@ func (e *EnterpriseAddress) NetworkInfo() *network.NetworkInfo {
 
 // Prefix returns the string prefix for the Enterprise Address. Prefix `addr` for mainnet addresses and `addr_test` for testnet.
 func (e *EnterpriseAddress) Prefix() string {
-	if e.Network.NetworkId == network.TestNet().NetworkId {
-		return "addr_test"
+	if e.Network.NetworkId == network.MainNet().NetworkId {
+		return "addr"
 	}
-	return "addr"
+	return "addr_test"
 }
 
 // MarshalCBOR returns a cbor encoded byte slice of the enterprise address.

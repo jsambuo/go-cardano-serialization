@@ -59,6 +59,8 @@ func NewAddressFromBytes(data []byte) (addr Address, err error) {
 	netId := header & 0x0F
 
 	networks := map[byte]network.NetworkInfo{
+		byte(3): *network.Preview(),
+		byte(2): *network.PreProd(),
 		byte(1): *network.MainNet(),
 		byte(0): *network.TestNet(),
 	}

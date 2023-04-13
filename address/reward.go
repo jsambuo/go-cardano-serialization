@@ -40,10 +40,10 @@ func (r *RewardAddress) NetworkInfo() *network.NetworkInfo {
 
 // Prefix returns the string prefix for the base address. Prefix `stake` for mainnet addresses and `stake_test` for testnet.
 func (r *RewardAddress) Prefix() string {
-	if r.Network.NetworkId == network.TestNet().NetworkId {
-		return "stake_test"
+	if r.Network.NetworkId == network.MainNet().NetworkId {
+		return "stake"
 	}
-	return "stake"
+	return "stakee_test"
 }
 
 // NewRewardAddress returns a pointer to a new RewardAddress given the network and stake credentials.

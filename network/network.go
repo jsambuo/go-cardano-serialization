@@ -18,3 +18,17 @@ func MainNet() *NetworkInfo {
 		ProtocolMagic: 764824073,
 	}
 }
+
+func PreProd() *NetworkInfo {
+	return &NetworkInfo{
+		NetworkId:     0b0010,
+		ProtocolMagic: 1,
+	}
+}
+
+func Preview() *NetworkInfo {
+	return &NetworkInfo{
+		NetworkId:     0b0011,
+		ProtocolMagic: 2,
+	}
+}

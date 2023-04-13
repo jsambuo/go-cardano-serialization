@@ -25,6 +25,10 @@ type blockfrostNode struct {
 func (b *blockfrostNode) getNetwork() (serverUrl string) {
 	if b.network.NetworkId == 0 {
 		serverUrl = blockfrost.CardanoTestNet
+	} else if b.network.NetworkId == 2 {
+		serverUrl = blockfrost.CardanoPreProd
+	} else if b.network.NetworkId == 3 {
+		serverUrl = blockfrost.CardanoPreview
 	} else {
 		serverUrl = blockfrost.CardanoMainNet
 	}
@@ -129,6 +133,10 @@ func NewBlockfrostClient(projectId string, network *network.NetworkInfo) Node {
 	var serverUrl string
 	if network.NetworkId == 0 {
 		serverUrl = blockfrost.CardanoTestNet
+	} else if network.NetworkId == 2 {
+		serverUrl = blockfrost.CardanoPreProd
+	} else if network.NetworkId == 3 {
+		serverUrl = blockfrost.CardanoPreview
 	} else {
 		serverUrl = blockfrost.CardanoMainNet
 	}
@@ -150,7 +158,6 @@ func NewBlockfrostClient(projectId string, network *network.NetworkInfo) Node {
 
 // QueryTip is the equivalent of
 // `cardano-cli query tip ${network_parameters}`
-//
 func (b *blockfrostNode) QueryTip() (nt NetworkTip, err error) {
 	block, err := b.client.BlockLatest(context.TODO())
 

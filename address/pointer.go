@@ -82,10 +82,10 @@ func (p *PointerAddress) String() string {
 
 // Prefix returns the string prefix for the base address. Prefix `addr` for mainnet addresses and `addr_test` for testnet.
 func (p *PointerAddress) Prefix() string {
-	if p.Network == *network.TestNet() {
-		return "addr_test"
+	if p.Network == *network.MainNet() {
+		return "addr"
 	}
-	return "addr"
+	return "addr_test"
 }
 
 // NetworkInfo returns NetworkInfo{ProtocolMagigic and NetworkId}.
