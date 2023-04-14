@@ -10,10 +10,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/fivebinaries/go-cardano-serialization/address"
-	"github.com/fivebinaries/go-cardano-serialization/network"
-	"github.com/fivebinaries/go-cardano-serialization/protocol"
-	"github.com/fivebinaries/go-cardano-serialization/tx"
+	"github.com/jsambuo/go-cardano-serialization/address"
+	"github.com/jsambuo/go-cardano-serialization/network"
+	"github.com/jsambuo/go-cardano-serialization/protocol"
+	"github.com/jsambuo/go-cardano-serialization/tx"
 )
 
 type cardanoCli struct {

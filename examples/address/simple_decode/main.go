@@ -6,7 +6,7 @@ package main
 import (
 	"log"
 
-	"github.com/fivebinaries/go-cardano-serialization/address"
+	"github.com/jsambuo/go-cardano-serialization/address"
 )
 
 func main() {

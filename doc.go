@@ -17,9 +17,9 @@
 		## TODO ##
 
 	Examples can be found at
-	https://github.com/fivebinaries/go-cardano-serialization/tree/master/example
+	https://github.com/jsambuo/go-cardano-serialization/tree/master/example
 	If you find an issue with the SDK, please report through
-	https://github.com/fivebinaries/go-cardano-serialization/issues/new
+	https://github.com/jsambuo/go-cardano-serialization/issues/new
 */
 
 package gada

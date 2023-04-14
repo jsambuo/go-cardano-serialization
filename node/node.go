@@ -1,9 +1,9 @@
 package node
 
 import (
-	"github.com/fivebinaries/go-cardano-serialization/address"
-	"github.com/fivebinaries/go-cardano-serialization/protocol"
-	"github.com/fivebinaries/go-cardano-serialization/tx"
+	"github.com/jsambuo/go-cardano-serialization/address"
+	"github.com/jsambuo/go-cardano-serialization/protocol"
+	"github.com/jsambuo/go-cardano-serialization/tx"
 )
 
 type Node interface {

@@ -6,8 +6,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/fivebinaries/go-cardano-serialization/address"
-	"github.com/fivebinaries/go-cardano-serialization/network"
+	"github.com/jsambuo/go-cardano-serialization/address"
+	"github.com/jsambuo/go-cardano-serialization/network"
 	"github.com/stretchr/testify/assert"
 )
 

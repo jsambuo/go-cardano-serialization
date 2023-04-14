@@ -6,14 +6,14 @@
 </p>
 
 # Go Cardano Serialization Library
-[![GoDoc](https://godoc.org/github.com/fivebinaries/go-cardano-serialization?status.svg)](https://godoc.org/github.com/fivebinaries/go-cardano-serialization)
+[![GoDoc](https://godoc.org/github.com/jsambuo/go-cardano-serialization?status.svg)](https://godoc.org/github.com/jsambuo/go-cardano-serialization)
 
 Golang library for serialization and deserialiation of Cardano data structures. 
 
 ## Installation
 
 ```bash
-go get github.com/fivebinaries/go-cardano-serialization
+go get github.com/jsambuo/go-cardano-serialization
 ```
 
 ## Usage
@@ -27,8 +27,8 @@ package main
 import (
     "log"
 
-    "github.com/fivebinaries/go-cardano-serialization/address"
-    "github.com/fivebinaries/go-cardano-serialization/tx"
+    "github.com/jsambuo/go-cardano-serialization/address"
+    "github.com/jsambuo/go-cardano-serialization/tx"
 )
 
 func main() {
@@ -68,4 +68,4 @@ More examples covering building through signing and submission of transactions c
 
 ## License
 
-Licensed under the [Apache License 2.0](https://opensource.org/licenses/Apache-2.0), see [`LICENSE`](https://github.com/fivebinaries/go-cardano-serialization/blob/master/LICENSE)
+Licensed under the [Apache License 2.0](https://opensource.org/licenses/Apache-2.0), see [`LICENSE`](https://github.com/jsambuo/go-cardano-serialization/blob/master/LICENSE)

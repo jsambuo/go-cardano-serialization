@@ -12,11 +12,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/fivebinaries/go-cardano-serialization/address"
-	"github.com/fivebinaries/go-cardano-serialization/bip32"
-	"github.com/fivebinaries/go-cardano-serialization/network"
-	"github.com/fivebinaries/go-cardano-serialization/protocol"
-	"github.com/fivebinaries/go-cardano-serialization/tx"
+	"github.com/jsambuo/go-cardano-serialization/address"
+	"github.com/jsambuo/go-cardano-serialization/bip32"
+	"github.com/jsambuo/go-cardano-serialization/network"
+	"github.com/jsambuo/go-cardano-serialization/protocol"
+	"github.com/jsambuo/go-cardano-serialization/tx"
 	"github.com/stretchr/testify/assert"
 )
 
