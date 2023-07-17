@@ -61,6 +61,31 @@ func (b *blockfrostNode) UTXOs(addr address.Address) (txIs []tx.TxInput, err err
 
 	return
 }
+func (b *blockfrostNode) UTXOsCopy(addr address.Address) (txIs []tx.TxInputCopy, err error) {
+	utxos, err := b.client.AddressUTXOs(
+		context.TODO(),
+		addr.String(),
+		blockfrost.APIQueryParams{},
+	)
+	if err != nil {
+		return
+	}
+
+	for _, utxo := range utxos {
+		var amount string
+		for _, am := range utxo.Amount {
+			amountS := am.Quantity
+			if amountS == "" {
+				return []tx.TxInputCopy{}, err
+			}
+			amount = amountS
+
+		}
+		txIs = append(txIs, *tx.NewTxInputCopy(utxo.TxHash, uint16(utxo.OutputIndex), amount))
+	}
+
+	return
+}
 
 // ProtocolParameters queries the protocol parameters of the network.
 func (b *blockfrostNode) ProtocolParameters() (p protocol.Protocol, err error) {
@@ -150,7 +175,6 @@ func NewBlockfrostClient(projectId string, network *network.NetworkInfo) Node {
 
 // QueryTip is the equivalent of
 // `cardano-cli query tip ${network_parameters}`
-//
 func (b *blockfrostNode) QueryTip() (nt NetworkTip, err error) {
 	block, err := b.client.BlockLatest(context.TODO())
 
