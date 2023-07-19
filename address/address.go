@@ -7,9 +7,9 @@ import (
 	"strings"
 
 	"github.com/btcsuite/btcutil/base58"
-	"github.com/fivebinaries/go-cardano-serialization/internal/bech32"
-	"github.com/fivebinaries/go-cardano-serialization/network"
 	"github.com/fxamacker/cbor/v2"
+	"github.com/jsambuo/go-cardano-serialization/internal/bech32"
+	"github.com/jsambuo/go-cardano-serialization/network"
 )
 
 var (
@@ -59,6 +59,8 @@ func NewAddressFromBytes(data []byte) (addr Address, err error) {
 	netId := header & 0x0F
 
 	networks := map[byte]network.NetworkInfo{
+		byte(3): *network.Preview(),
+		byte(2): *network.PreProd(),
 		byte(1): *network.MainNet(),
 		byte(0): *network.TestNet(),
 	}

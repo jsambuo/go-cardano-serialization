@@ -7,11 +7,11 @@ import (
 	"os"
 	"strings"
 
-	"github.com/fivebinaries/go-cardano-serialization/address"
-	"github.com/fivebinaries/go-cardano-serialization/bip32"
-	"github.com/fivebinaries/go-cardano-serialization/network"
-	"github.com/fivebinaries/go-cardano-serialization/node"
-	"github.com/fivebinaries/go-cardano-serialization/tx"
+	"github.com/jsambuo/go-cardano-serialization/address"
+	"github.com/jsambuo/go-cardano-serialization/bip32"
+	"github.com/jsambuo/go-cardano-serialization/network"
+	"github.com/jsambuo/go-cardano-serialization/node"
+	"github.com/jsambuo/go-cardano-serialization/tx"
 	"github.com/tyler-smith/go-bip39"
 )
 

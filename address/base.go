@@ -1,8 +1,8 @@
 package address
 
 import (
-	"github.com/fivebinaries/go-cardano-serialization/internal/bech32"
-	"github.com/fivebinaries/go-cardano-serialization/network"
+	"github.com/jsambuo/go-cardano-serialization/internal/bech32"
+	"github.com/jsambuo/go-cardano-serialization/network"
 
 	"github.com/fxamacker/cbor/v2"
 )

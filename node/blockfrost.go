@@ -10,10 +10,10 @@ import (
 	"strconv"
 
 	"github.com/blockfrost/blockfrost-go"
-	"github.com/fivebinaries/go-cardano-serialization/address"
-	"github.com/fivebinaries/go-cardano-serialization/network"
-	"github.com/fivebinaries/go-cardano-serialization/protocol"
-	"github.com/fivebinaries/go-cardano-serialization/tx"
+	"github.com/jsambuo/go-cardano-serialization/address"
+	"github.com/jsambuo/go-cardano-serialization/network"
+	"github.com/jsambuo/go-cardano-serialization/protocol"
+	"github.com/jsambuo/go-cardano-serialization/tx"
 )
 
 type blockfrostNode struct {
@@ -25,6 +25,10 @@ type blockfrostNode struct {
 func (b *blockfrostNode) getNetwork() (serverUrl string) {
 	if b.network.NetworkId == 0 {
 		serverUrl = blockfrost.CardanoTestNet
+	} else if b.network.NetworkId == 2 {
+		serverUrl = blockfrost.CardanoPreProd
+	} else if b.network.NetworkId == 3 {
+		serverUrl = blockfrost.CardanoPreview
 	} else {
 		serverUrl = blockfrost.CardanoMainNet
 	}
@@ -154,6 +158,10 @@ func NewBlockfrostClient(projectId string, network *network.NetworkInfo) Node {
 	var serverUrl string
 	if network.NetworkId == 0 {
 		serverUrl = blockfrost.CardanoTestNet
+	} else if network.NetworkId == 2 {
+		serverUrl = blockfrost.CardanoPreProd
+	} else if network.NetworkId == 3 {
+		serverUrl = blockfrost.CardanoPreview
 	} else {
 		serverUrl = blockfrost.CardanoMainNet
 	}
