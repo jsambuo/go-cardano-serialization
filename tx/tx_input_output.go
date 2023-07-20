@@ -14,12 +14,30 @@ type TxInput struct {
 	Index  uint16
 	Amount uint
 }
-type TxInputCopy struct {
+
+type Amount struct {
+	Unit     string
+	Quantity string
+}
+type Amounts struct {
+	Amount []Amount
+}
+type TxInputWithNFTS struct {
 	cbor.Marshaler
 
 	TxHash []byte
 	Index  uint16
-	Amount string
+	Amount Amounts
+}
+
+func NewTxInputWithNFTS(txHash string, txIx uint16, amount Amounts) *TxInputWithNFTS {
+	hash, _ := hex.DecodeString(txHash)
+
+	return &TxInputWithNFTS{
+		TxHash: hash,
+		Index:  txIx,
+		Amount: amount,
+	}
 }
 
 // NewTxInput creates and returns a *TxInput from Transaction Hash(Hex Encoded), Transaction Index and Amount.
@@ -27,15 +45,6 @@ func NewTxInput(txHash string, txIx uint16, amount uint) *TxInput {
 	hash, _ := hex.DecodeString(txHash)
 
 	return &TxInput{
-		TxHash: hash,
-		Index:  txIx,
-		Amount: amount,
-	}
-}
-func NewTxInputCopy(txHash string, txIx uint16, amount string) *TxInputCopy {
-	hash, _ := hex.DecodeString(txHash)
-
-	return &TxInputCopy{
 		TxHash: hash,
 		Index:  txIx,
 		Amount: amount,

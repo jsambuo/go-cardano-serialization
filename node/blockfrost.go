@@ -65,7 +65,9 @@ func (b *blockfrostNode) UTXOs(addr address.Address) (txIs []tx.TxInput, err err
 
 	return
 }
-func (b *blockfrostNode) UTXOsCopy(addr address.Address) (txIs []tx.TxInputCopy, err error) {
+
+func (b *blockfrostNode) UTXOsWithNFTS(addr address.Address) (txIs []tx.TxInputWithNFTS, err error) {
+
 	utxos, err := b.client.AddressUTXOs(
 		context.TODO(),
 		addr.String(),
@@ -74,18 +76,18 @@ func (b *blockfrostNode) UTXOsCopy(addr address.Address) (txIs []tx.TxInputCopy,
 	if err != nil {
 		return
 	}
-
 	for _, utxo := range utxos {
-		var amount string
+		amounts := []tx.Amount{}
 		for _, am := range utxo.Amount {
-			amountS := am.Quantity
-			if amountS == "" {
-				return []tx.TxInputCopy{}, err
-			}
-			amount = amountS
-
+			amounts = append(amounts, tx.Amount{
+				Unit:     am.Unit,
+				Quantity: am.Quantity,
+			})
 		}
-		txIs = append(txIs, *tx.NewTxInputCopy(utxo.TxHash, uint16(utxo.OutputIndex), amount))
+		response := tx.Amounts{
+			Amount: amounts,
+		}
+		txIs = append(txIs, *tx.NewTxInputWithNFTS(utxo.TxHash, uint16(utxo.OutputIndex), response))
 	}
 
 	return
@@ -97,7 +99,6 @@ func (b *blockfrostNode) ProtocolParameters() (p protocol.Protocol, err error) {
 	if err != nil {
 		return
 	}
-
 	minU, err := strconv.Atoi(params.MinUtxo)
 	if err != nil {
 		return

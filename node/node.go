@@ -9,6 +9,7 @@ import (
 type Node interface {
 	// UTXOs returns list of unspent transaction outputs
 	UTXOs(address.Address) ([]tx.TxInput, error)
+	UTXOsWithNFTS(address.Address) ([]tx.TxInputWithNFTS, error)
 
 	// SubmitTx submits a cbor marshalled transaction to the cardano blockchain
 	// using blockfrost or cardano-cli

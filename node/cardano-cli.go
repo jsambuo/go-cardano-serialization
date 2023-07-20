@@ -92,6 +92,49 @@ func (cli *cardanoCli) UTXOs(addr address.Address) (txIs []tx.TxInput, err error
 	return
 }
 
+func (cli *cardanoCli) UTXOsWithNFTS(addr address.Address) (txIs []tx.TxInputWithNFTS, err error) {
+	data, err := cli.execCommand("query", "utxos", fmt.Sprintf("--address %s", addr))
+	if err != nil {
+		return
+	}
+
+	ldata := strings.Split(string(data), "\n")
+	lenData := len(data)
+
+	if lenData < 3 {
+		return
+	}
+
+	for _, it := range ldata[2 : lenData-1] {
+		sec := strings.Fields(it)
+		txIx, err := strconv.ParseUint(sec[1], 10, 16)
+		if err != nil {
+			return txIs, err
+		}
+
+		amSec := strings.Fields(sec[2])
+
+		amount := amSec[0]
+		if amount == "" {
+			return txIs, err
+		}
+
+		utxo := *tx.NewTxInputWithNFTS(
+			sec[0],
+			uint16(txIx),
+			tx.Amounts{
+				Amount: []tx.Amount{
+					{
+						Unit:     amSec[1],
+						Quantity: amSec[0],
+					},
+				},
+			},
+		)
+		txIs = append(txIs, utxo)
+	}
+	return
+}
 func (cli *cardanoCli) QueryTip() (tip NetworkTip, err error) {
 	data, err := cli.execCommand("query", "tip")
 
